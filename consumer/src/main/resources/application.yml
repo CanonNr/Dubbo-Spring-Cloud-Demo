@@ -1,0 +1,17 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: consumer
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      # Nacos 服务发现与注册配置
+      discovery:
+        server-addr: 172.16.4.80:8848
+dubbo:
+  registry:
+    address: spring-cloud://localhost
+  cloud:
+    subscribed-services: provider

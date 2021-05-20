@@ -1,0 +1,24 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: provider
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      # Nacos 服务发现与注册配置
+      discovery:
+        server-addr: 172.16.4.80:8848
+dubbo:
+  scan:
+    # dubbo 服务扫描基准包
+    base-packages: com.example.provider.service
+  protocol:
+    # dubbo 协议
+    name: dubbo
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: -1
+  registry:
+    # 挂载到 Spring Cloud 注册中心
+    address: spring-cloud://localhost
